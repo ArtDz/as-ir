@@ -210,7 +210,7 @@ body {
     }
 
     .shadow-light100_dark200 {
-        @apply shadow-dark-200 dark:shadow-light-100;
+        @apply shadow-light-100 dark:shadow-dark-200;
     }
 
     .shadow-light100_darknone {
