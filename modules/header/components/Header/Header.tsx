@@ -1,9 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { Theme } from '@/modules/header/components/Theme/Theme'
+
 export const Header = () => {
   return (
-    <header className='flex-between background-light900_dark200 fixed z-50 w-full p-6 shadow-light-300'>
+    <header className='flex-between background-light900_dark200 shadow-light100_dark200 fixed z-50 w-full p-6'>
       <nav className='flex-between w-full'>
         <Link className='flex items-center gap-5' href='/'>
           <Image src='/images/logo.webp' alt='logo' width={61} height={61} />
@@ -20,7 +22,7 @@ export const Header = () => {
 
         <p>Search Icon</p>
 
-        <div>Theme</div>
+        <Theme />
       </nav>
     </header>
   )

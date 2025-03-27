@@ -209,8 +209,8 @@ body {
         @apply invert dark:invert-0;
     }
 
-    .shadow-light100_dark100 {
-        @apply shadow-light-100 dark:shadow-dark-100;
+    .shadow-light100_dark200 {
+        @apply shadow-dark-200 dark:shadow-light-100;
     }
 
     .shadow-light100_darknone {

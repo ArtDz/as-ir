@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react'
 
-import { Header } from '@/modules/navbar/components'
+import { Header } from '@/modules/header/components'
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
