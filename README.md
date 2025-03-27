@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Стек
 
-## Getting Started
+- Стейтменеджеры - **[TanStack Query](https://tanstack.com/query/v4/docs/react/quick-start), [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction)**
+- Работа с формами - **[react-hook-form](https://react-hook-form.com/get-started)** & **[zod](https://zod.dev/)**
+- UI библиотека - **[ShadCn](https://ui.shadcn.com/)**
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Структура
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **public** - статичный контент
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    - **app** - страницы next.js
+    - **components** - папка с общими компонентами приложения
+        - modals - модальные окна
+    - **config** - конфигурационные файлы
+    - **constants** - константы
+    - **context** - контексты
+    - **hooks** - кастомные хуки
+    - **modules** - модули
+    - **ui** - компоненты без бизнес-логики
+    - **utils** - вспомогательные функции
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**_В UI-компонентах разрешаются импорты только из папок constants и utils_**
 
-## Learn More
+## Модульная архитектура
 
-To learn more about Next.js, take a look at the following resources:
+Приложение разделено на модули, которые хранятся в папках **modules**. Каждая папка - отдельная фича, внутри следующая структура (опциаонально):
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **api**
+    - endpoints - эндпойнты для этой фичи
+    - methods - методы api для этой фичи
+    - interfaces - интерфейсы, касающиеся именно api
+    - index - по умолчанию экспортируются только api-методы и интерфейсы
+- **components** - компоненты для фичи
+- **hooks** - хуки, касающиеся фичи, но не касающиеся запросов к серверу
+- **helpers** - вспомогательные функции для фичи, но не хуки
+- **interfaces** - интерфейсы фичи, не касающиеся api
+    - common - общие интерфейсы фичи, используемые в компонентах
+    - queries - интерфейсы, используемые в папке queries, так же могут использоваться в api-методах для типизации принимаемых этими методами аргументов
+- **queries** - хуки для react-query
+    - types - enum для ключей в queries-хуках
+- **constants** - какие-либо статичные данные для фичи
+- **store** - файлы для какого-то внутреннего стора компонента

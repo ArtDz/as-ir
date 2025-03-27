@@ -23,8 +23,14 @@ export default [
   ),
   {
     rules: {
+      "no-extra-semi": "off",
       "no-undef": "off",
       semi: ["error", "never"],
+      "react/jsx-curly-brace-presence": [
+        "error",
+        { children: "never", propElementValues: "always" },
+      ],
+      "@typescript-eslint/ban-ts-comment": "off",
       "import/order": [
         "error",
         {
