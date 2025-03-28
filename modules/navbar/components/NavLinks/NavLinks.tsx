@@ -9,17 +9,22 @@ import { navigationLinks } from '@/modules/navbar/constants'
 import { SheetClose } from '@/ui/shadcn/sheet'
 import { cn } from '@/utils/cn'
 
+// Todo remove userId default value
 const NavLinks = ({
   isMobileNav = false,
+  userId = '1',
 }: {
   isMobileNav?: boolean
   userId?: string
 }) => {
   const pathname = usePathname()
-  const userId = '1'
 
   return (
-    <>
+    <ul
+      className={
+        isMobileNav ? 'flex flex-col gap-6 pt-16' : 'flex-between gap-4'
+      }
+    >
       {navigationLinks.map((item) => {
         const isActive =
           (pathname.includes(item.route) && item.route.length > 1) ||
@@ -30,44 +35,56 @@ const NavLinks = ({
           else return null
         }
 
-        const LinkComponent = (
-          <Link
-            href={item.route}
-            key={item.label}
-            className={cn(
-              isActive
-                ? 'primary-gradient rounded-lg text-light-900'
-                : 'text-dark300_light900',
-              'flex items-center justify-start gap-4 bg-transparent p-4',
-            )}
-          >
-            <Image
-              src={item.imgURL}
-              alt={item.label}
-              width={20}
-              height={20}
-              className={cn({ 'invert-colors': !isActive })}
-            />
-            <p
-              className={cn(
-                isActive ? 'base-bold' : 'base-medium',
-                !isMobileNav && 'max-lg:hidden',
-              )}
-            >
-              {item.label}
-            </p>
-          </Link>
-        )
+        let LinkComponent
 
-        return isMobileNav ? (
-          <SheetClose asChild key={item.route}>
-            {LinkComponent}
-          </SheetClose>
-        ) : (
-          LinkComponent
-        )
+        if (isMobileNav) {
+          LinkComponent = (
+            <li key={item.label}>
+              <SheetClose asChild>
+                <Link
+                  href={item.route}
+                  className={cn(
+                    isActive
+                      ? 'primary-gradient rounded-lg text-light-900'
+                      : 'text-dark300_light900',
+                    'flex items-center justify-start gap-4 bg-transparent p-4',
+                  )}
+                >
+                  <Image
+                    src={item.imgURL}
+                    alt={item.label}
+                    width={20}
+                    height={20}
+                    className={cn({ 'invert-colors': !isActive })}
+                  />
+                  <p className={cn(isActive ? 'base-bold' : 'base-medium')}>
+                    {item.label}
+                  </p>
+                </Link>
+              </SheetClose>
+            </li>
+          )
+        } else {
+          LinkComponent = (
+            <li key={item.label}>
+              <Link
+                href={item.route}
+                className={cn(
+                  isActive
+                    ? 'primary-gradient rounded-lg text-light-900'
+                    : 'text-dark300_light900',
+                  'flex items-center justify-start gap-2 bg-transparent px-2 py-0.5',
+                )}
+              >
+                <p className='text-sm'>{item.label}</p>
+              </Link>
+            </li>
+          )
+        }
+
+        return LinkComponent
       })}
-    </>
+    </ul>
   )
 }
 
