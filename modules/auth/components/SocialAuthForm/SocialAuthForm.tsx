@@ -33,7 +33,7 @@ export const SocialAuthForm = () => {
           height={20}
           className='invert-colors mr-2.5 object-contain'
         />
-        <span>Log in with GitHub</span>
+        <span>Войти через GitHub</span>
       </Button>
 
       <Button className={buttonClass} onClick={() => handleSignIn('google')}>
@@ -44,7 +44,7 @@ export const SocialAuthForm = () => {
           height={20}
           className='mr-2.5 object-contain'
         />
-        <span>Log in with Google</span>
+        <span>Войти через Google</span>
       </Button>
     </div>
   )

@@ -7,12 +7,6 @@ body {
 }
 
 @layer utilities {
-    .gradient-text {
-        background: linear-gradient(72deg, #FFFFFF 0%, #BE6BFF 54%, #625FFF 66%, #C6C7F8 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
     .background-light850_dark100 {
         @apply bg-light-850 dark:bg-dark-100;
     }
@@ -218,7 +212,7 @@ body {
     }
 
     .primary-gradient {
-        background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
+        background: linear-gradient(72deg, #FFFFFF 0%, #BE6BFF 54%, #625FFF 66%, #C6C7F8 100%);
     }
 
     .dark-gradient {
@@ -238,7 +232,7 @@ body {
     }
 
     .primary-text-gradient {
-        background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
+        background: linear-gradient(72deg, #FFFFFF 0%, #BE6BFF 54%, #625FFF 66%, #C6C7F8 100%);
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
