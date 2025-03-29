@@ -9,9 +9,6 @@ export const Navbar = () => {
       <nav className='flex-between w-full'>
         <Logo />
         <NavLinks />
-
-        <p>Search Icon</p>
-
         <Theme />
         <MobileNavigation />
       </nav>

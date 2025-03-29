@@ -3,6 +3,7 @@ const Routes = {
   SignIn: '/sign-in',
   SignUp: '/sign-up',
   Posts: '/posts',
+  Post: (id: string) => `/posts/${id}`,
   Cart: '/cart',
   Collection: '/collection',
   Books: '/books',
