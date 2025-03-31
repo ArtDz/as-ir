@@ -3,6 +3,7 @@ import { IPost } from '@/interfaces/post.interfaces'
 import { HomeFilter } from '@/modules/filters/components'
 import { PostCard } from '@/modules/posts/components'
 import { LocalSearch } from '@/modules/search/components'
+import { AsideTags } from '@/modules/tags/components'
 
 const fakePosts: IPost[] = [
   {
@@ -110,6 +111,7 @@ const Home = async () => {
           <PostCard key={post._id} {...post} />
         ))}
       </div>
+      <AsideTags />
     </Container>
   )
 }

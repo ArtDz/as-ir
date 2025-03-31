@@ -212,7 +212,14 @@ body {
     }
 
     .primary-gradient {
+        background: #625FFF;
         background: linear-gradient(72deg, #FFFFFFA6 0%, #BE6BFF 54%, #625FFF 66%, #C6C7F8 100%);
+    }
+
+    .secondary-gradient {
+        background: #141E30;
+        background: -webkit-linear-gradient(to right, #243B55, #141E30);
+        background: linear-gradient(to right, #243B55, #141E30);
     }
 
     .dark-gradient {
