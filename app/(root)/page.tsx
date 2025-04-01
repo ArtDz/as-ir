@@ -1,11 +1,11 @@
 import { Container } from '@/components/template/Container'
-import { IPost } from '@/interfaces/post.interfaces'
+import { IPostFilled } from '@/interfaces/post.interfaces'
 import { HomeFilter } from '@/modules/filters/components'
 import { PostCard } from '@/modules/posts/components'
 import { LocalSearch } from '@/modules/search/components'
 import { AsideTags } from '@/modules/tags/components'
 
-const fakePosts: IPost[] = [
+const fakePosts: IPostFilled[] = [
   {
     _id: '1',
     author: { _id: '1', name: 'Btr', image: '' },

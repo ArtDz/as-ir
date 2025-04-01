@@ -9,7 +9,7 @@ export interface ITag {
   name: string
 }
 
-export interface IPost {
+export interface IPostFilled {
   _id: string
   title: string // также прокинем в метатег title
   content: string

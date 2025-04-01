@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import Routes from '@/constants/routes'
-import { IPost } from '@/interfaces/post.interfaces'
+import { IPostFilled } from '@/interfaces/post.interfaces'
 import { TagCard } from '@/modules/tags/components'
 
 export const PostCard = ({
@@ -14,7 +14,7 @@ export const PostCard = ({
   likes,
   createdAt,
   categories,
-}: IPost) => {
+}: IPostFilled) => {
   // Todo либо использовать getTimeStamp fn from utils
   const formattedDate = new Date(createdAt).toLocaleDateString('ru-RU', {
     year: 'numeric',
