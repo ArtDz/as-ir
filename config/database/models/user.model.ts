@@ -6,7 +6,8 @@ interface IUser {
   name: string
   username: string
   email: string
-  image: string
+  image?: string
+  location?: string
   role: UserRole
   cart: Types.ObjectId
   orders: Types.ObjectId[]
@@ -21,7 +22,13 @@ const UserSchema = new Schema<IUser>(
     username: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     image: { type: String },
-    role: { type: String, enum: ['USER', 'ADMIN'], required: true },
+    location: { type: String },
+    role: {
+      type: String,
+      enum: ['USER', 'ADMIN'],
+      required: true,
+      default: 'USER',
+    },
     cart: { type: Schema.Types.ObjectId, ref: 'Cart' },
     orders: [{ type: Schema.Types.ObjectId, ref: 'Order' }],
     verified: { type: Date },
