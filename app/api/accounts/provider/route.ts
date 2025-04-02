@@ -2,6 +2,7 @@
 import { NextResponse } from 'next/server'
 
 import { Account } from '@/config/database/models'
+import { dbConnect } from '@/config/database/mongoose'
 import handleError from '@/config/handlers/error'
 import { NotFoundError } from '@/config/http-errors'
 import { AccountSchema } from '@/config/validation'
@@ -12,6 +13,7 @@ export async function POST(request: Request) {
   if (!providerAccountId) throw new NotFoundError('Account')
 
   try {
+    await dbConnect()
     AccountSchema.partial().parse({ providerAccountId })
 
     const account = await Account.findOne({ providerAccountId })

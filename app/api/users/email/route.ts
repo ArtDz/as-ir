@@ -3,6 +3,7 @@
 import { NextResponse } from 'next/server'
 
 import { User } from '@/config/database/models'
+import { dbConnect } from '@/config/database/mongoose'
 import handleError from '@/config/handlers/error'
 import { NotFoundError, ValidationError } from '@/config/http-errors'
 import { UserSchema } from '@/config/validation'
@@ -13,6 +14,7 @@ export async function POST(request: Request) {
   if (!email) throw new NotFoundError('Email')
 
   try {
+    await dbConnect()
     const validatedData = UserSchema.partial().safeParse({ email })
 
     if (!validatedData.success)

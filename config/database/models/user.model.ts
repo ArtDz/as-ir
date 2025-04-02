@@ -2,7 +2,7 @@ import { Document, model, models, Schema, Types } from 'mongoose'
 
 export type UserRole = 'USER' | 'ADMIN'
 
-interface IUser {
+export interface IUser {
   name: string
   username: string
   email: string
