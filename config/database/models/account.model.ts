@@ -1,5 +1,8 @@
 import { model, models, Schema, Types, Document } from 'mongoose'
 
+/** У одного пользователя может быть несколько аккаунтов. Зависит от количества провайдеров, которые он использовал при входе.
+ * Также поле password хранится в модели аккаунта, а не User.
+ * */
 export interface IAccount {
   userId: Types.ObjectId
   name: string
