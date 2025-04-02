@@ -1,13 +1,13 @@
 import { model, models, Schema, Types, Document } from 'mongoose'
 
-export interface ITagPost {
+export interface IBookCategoryBook {
   bookCategory: Types.ObjectId
   book: Types.ObjectId
 }
 
-export interface ITagPostDoc extends ITagPost, Document {}
+export interface IBookCategoryBookDoc extends IBookCategoryBook, Document {}
 
-const TagPostSchema = new Schema<ITagPost>(
+const BookCategoryBookSchema = new Schema<IBookCategoryBook>(
   {
     bookCategory: {
       type: Schema.Types.ObjectId,
@@ -19,6 +19,8 @@ const TagPostSchema = new Schema<ITagPost>(
   { timestamps: true },
 )
 
-const TagPost = models?.TagPost || model<ITagPost>('TagPost', TagPostSchema)
+const BookCategoryBook =
+  models?.BookCategoryBook ||
+  model<IBookCategoryBook>('BookCategoryBook', BookCategoryBookSchema)
 
-export default TagPost
+export default BookCategoryBook

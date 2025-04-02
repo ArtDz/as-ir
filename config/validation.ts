@@ -1,4 +1,3 @@
-import { Types } from 'mongoose'
 import { z } from 'zod'
 
 /** Схемы валидации для бекенда. */
@@ -28,4 +27,21 @@ export const AccountSchema = z.object({
   providerAccountId: z
     .string()
     .min(1, { message: 'Provider account id is required.' }),
+})
+
+export const SignInWithOAuthSchema = z.object({
+  provider: z.enum(['google', 'github']),
+  providerAccountId: z
+    .string()
+    .min(1, { message: 'Provider Account ID is required.' }),
+  user: z.object({
+    name: z.string().min(1, { message: 'Name is required.' }),
+    username: z
+      .string()
+      .min(3, { message: 'Username must be at least 3 characters long.' }),
+    email: z
+      .string()
+      .email({ message: 'Please provide a valid email address.' }),
+    image: z.string().url('Invalid image URL').optional(),
+  }),
 })

@@ -2,8 +2,13 @@ import { IAccount } from '@/config/database/models/account.model'
 import { IUser } from '@/config/database/models/user.model'
 import fetchClient from '@/config/handlers/fetch'
 import Routes from '@/constants/routes'
+import { SignInWithOAuthParams } from '@/interfaces/auth.interfaces'
 
 export const api = {
+  auth: {
+    oAuthSignIn: (params: SignInWithOAuthParams) =>
+      fetchClient.post(Routes.SignInWithOAuth, params),
+  },
   users: {
     getAll: () => fetchClient.get(Routes.Users),
     getById: (id: string) => fetchClient.get(Routes.User(id)),

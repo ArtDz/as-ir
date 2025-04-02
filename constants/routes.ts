@@ -20,6 +20,7 @@ const Routes = {
   Profile: (id: string) => `/profile/${id}`,
   Tags: '/tags',
   Tag: (id: string) => `/tags/${id}`,
+  SignInWithOAuth: '/auth/sign-in-with-oauth',
 }
 
 export default Routes
