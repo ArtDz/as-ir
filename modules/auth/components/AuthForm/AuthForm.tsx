@@ -48,7 +48,7 @@ export const AuthForm = <T extends FieldValues>({
 
   const handleSubmit: SubmitHandler<T> = async (data: T) => {
     const { error, success } = await onSubmit?.(data)
-    console.log(error)
+
     if (success) {
       toast.success(
         formType === 'sign-in'

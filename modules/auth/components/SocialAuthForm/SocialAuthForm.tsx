@@ -16,7 +16,6 @@ export const SocialAuthForm = () => {
     try {
       await signIn(provider, { redirectTo: Routes.Home })
     } catch (error) {
-      console.log(error)
       toast.error(
         error instanceof Error ? error.message : 'Произошла ошибка при входе',
       )

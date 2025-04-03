@@ -96,9 +96,7 @@ export const PostForm = () => {
     <Form {...form}>
       <form
         className='flex w-full flex-col gap-10'
-        onSubmit={form.handleSubmit(handleCreatePost, (data) => {
-          console.log(data)
-        })}
+        onSubmit={form.handleSubmit(handleCreatePost)}
       >
         <FormField
           control={form.control}

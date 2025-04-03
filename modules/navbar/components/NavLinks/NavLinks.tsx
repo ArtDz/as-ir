@@ -9,10 +9,9 @@ import { navigationLinks } from '@/modules/navbar/constants'
 import { SheetClose } from '@/ui/shadcn/sheet'
 import { cn } from '@/utils/cn'
 
-// Todo remove userId default value
 const NavLinks = ({
   isMobileNav = false,
-  userId = '1',
+  userId,
 }: {
   isMobileNav?: boolean
   userId?: string
@@ -22,7 +21,9 @@ const NavLinks = ({
   return (
     <ul
       className={
-        isMobileNav ? 'flex flex-col gap-6 pt-16' : 'flex-between gap-4'
+        isMobileNav
+          ? 'flex flex-col gap-6 pt-16'
+          : 'hidden items-center justify-between gap-4 md:flex'
       }
     >
       {navigationLinks.map((item) => {
