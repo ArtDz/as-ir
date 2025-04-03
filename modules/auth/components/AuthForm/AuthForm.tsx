@@ -2,6 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import {
   DefaultValues,
   FieldValues,
@@ -9,9 +10,11 @@ import {
   SubmitHandler,
   useForm,
 } from 'react-hook-form'
+import { toast } from 'sonner'
 import { z, ZodType } from 'zod'
 
 import Routes from '@/constants/routes'
+import { ActionResponse } from '@/interfaces/api.interfaces'
 import { signSchemaMap } from '@/modules/auth/constants'
 import { Button } from '@/ui/shadcn/button'
 import {
@@ -27,7 +30,7 @@ import { Input } from '@/ui/shadcn/input'
 interface AuthFormProps<T extends FieldValues> {
   schema: ZodType<T>
   defaultValues: T
-  onSubmit: (data: T) => Promise<{ success: boolean }>
+  onSubmit: (data: T) => Promise<ActionResponse>
   formType: 'sign-in' | 'sign-up'
 }
 
@@ -37,13 +40,25 @@ export const AuthForm = <T extends FieldValues>({
   formType,
   onSubmit,
 }: AuthFormProps<T>) => {
+  const router = useRouter()
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
     defaultValues: defaultValues as DefaultValues<T>,
   })
 
-  const handleSubmit: SubmitHandler<T> = async () => {
-    //   Todo
+  const handleSubmit: SubmitHandler<T> = async (data: T) => {
+    const { error, success } = await onSubmit?.(data)
+    console.log(error)
+    if (success) {
+      toast.success(
+        formType === 'sign-in'
+          ? 'Вход выполнен успешно'
+          : 'Регистрация прошла успешно',
+      )
+      router.push(Routes.Home)
+    } else {
+      toast.error(error ? error.message : 'Произошла ошибка, попробуйте позже.')
+    }
   }
 
   const buttonText = formType === 'sign-in' ? 'Войти' : 'Регистрация'

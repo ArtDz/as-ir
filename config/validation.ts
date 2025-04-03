@@ -45,3 +45,15 @@ export const SignInWithOAuthSchema = z.object({
     image: z.string().url('Invalid image URL').optional(),
   }),
 })
+
+export const SignUpWithCredentialsSchema = z.object({
+  name: z.string().min(1, { message: 'Name is required.' }),
+  username: z
+    .string()
+    .min(3, { message: 'Username must be at least 3 characters long.' }),
+  email: z.string().email({ message: 'Please provide a valid email address.' }),
+  password: z
+    .string()
+    .min(6, { message: 'Пароль должен содержать как минимум 6 символов.' })
+    .max(30, { message: 'Пароль не может превышать 30 символов.' }),
+})
