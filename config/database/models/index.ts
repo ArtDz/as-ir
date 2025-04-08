@@ -6,6 +6,7 @@ import Cart from './cart.model'
 import Collection from './collection.model'
 import Comment from './comment.model'
 import Like from './like.model'
+import Media from './media.model'
 import Order from './order.model'
 import Post from './post.model'
 import PostCategoryPost from './postCategory-post.model'
@@ -23,6 +24,7 @@ export {
   Collection,
   Comment,
   Like,
+  Media,
   Order,
   Post,
   PostCategory,

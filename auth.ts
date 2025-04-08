@@ -58,6 +58,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     async session({ session, token }) {
       session.user.id = token.sub as string
+      // Todo добавить роль user-a в session, после добавления + типизировать
+      // session.user.role = token.role as string
       return session
     },
     async jwt({ token, account }) {
@@ -74,6 +76,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const userId = existingAccount.userId
 
         if (userId) token.sub = userId.toString()
+        // Todo добавить роль user-a в jwt, для этого запросить из бд user-a и проверить его роль
+        // token.role = 'admin'
       }
 
       return token

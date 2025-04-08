@@ -7,7 +7,6 @@ import { UserAvatar } from '@/ui/UserAvatar/UserAvatar'
 
 export const Navbar = async () => {
   const session = await auth()
-  console.log('session', session)
 
   return (
     <header className='flex-between background-light900_dark200 shadow-light100_dark200 sticky z-50 w-full p-6'>

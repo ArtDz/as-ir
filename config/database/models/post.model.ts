@@ -10,7 +10,7 @@ export interface IPost {
   author: Types.ObjectId
   categories: Types.ObjectId[]
   description: string
-  image?: string
+  image: Types.ObjectId
 }
 
 export interface IPostDoc extends IPost, Document {}
@@ -28,7 +28,7 @@ const PostSchema = new Schema<IPost>(
       { type: Schema.Types.ObjectId, ref: 'PostCategory', required: true },
     ],
     description: { type: String, required: true },
-    image: { type: String },
+    image: { type: Schema.Types.ObjectId, ref: 'Media', required: true },
   },
   { timestamps: true },
 )
